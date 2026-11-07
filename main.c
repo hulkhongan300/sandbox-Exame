@@ -15,12 +15,6 @@ typedef struct {
 
 static float RandomSpeed(void) { return (float)GetRandomValue(120, 300); }
 
-static Color RandomColor(void) {
-    return (Color){ (unsigned char)GetRandomValue(80, 255),
-                    (unsigned char)GetRandomValue(80, 255),
-                    (unsigned char)GetRandomValue(80, 255), 255 };
-}
-
 // Start the four boxes in a tight 2x2 block at the center, each flying
 // toward its own corner at a random speed.
 // Place every box at a random free spot with a random direction and speed.
@@ -121,9 +115,9 @@ int main(void) {
         }
 
         // 2) box vs box (every pair once)
-        //for (int i = 0; i < NUM_BOXES; i++)
-         //   for (int j = i + 1; j < NUM_BOXES; j++)
-            //    if (CollideBoxes(&boxes[i], &boxes[j])) bg = RandomColor();
+        for (int i = 0; i < NUM_BOXES; i++)
+            for (int j = i + 1; j < NUM_BOXES; j++)
+                CollideBoxes(&boxes[i], &boxes[j]);
 
 
         // 3) box vs walls
